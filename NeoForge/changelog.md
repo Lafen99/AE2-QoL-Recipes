@@ -1,1 +1,1 @@
-Update to 1.20.2-1.20.4 NeoForge
+Project structure change to prepare for 1.20.5

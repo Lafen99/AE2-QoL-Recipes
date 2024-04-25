@@ -9,15 +9,8 @@ plugins {
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-version = mod_version
-group = mod_group_id
-
-repositories {
-    mavenLocal()
-}
-
 base {
-    archivesBaseName = "${mod_id}-neoforge-${supported_versions}"
+    archivesBaseName = "${mod_id}-neoforge-${neo_supported_versions}"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -49,34 +42,23 @@ runs {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+	compileOnly project(":Common")
 
     implementation "maven.modrinth:cloth-config:6GeyuE7Y"
     implementation "maven.modrinth:architectury-api:BcFTKnjw"
     implementation "maven.modrinth:rei:HaXjvArr"
 
     implementation "maven.modrinth:ae2:Cf5vGMwV" // https://modrinth.com/mod/ae2/versions
-
 }
 
-repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-        content {
-            includeGroup "maven.modrinth"
-        }
-    }
+tasks.withType(JavaCompile).configureEach {
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+processResources {
+    from project(":Common").sourceSets.main.resources
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -85,7 +67,7 @@ tasks.withType(ProcessResources).configureEach {
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             neo_version: neo_version, neo_version_range: neo_version_range,
             loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, version: version,
             mod_authors: mod_authors, mod_description: mod_description
     ]
 
@@ -94,10 +76,6 @@ tasks.withType(ProcessResources).configureEach {
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties
     }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
