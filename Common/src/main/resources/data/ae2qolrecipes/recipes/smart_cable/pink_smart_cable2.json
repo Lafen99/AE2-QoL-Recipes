@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CDC",
+    "CCC"
+  ],
+  "key": {
+    "D": {
+      "tag": "c:dyes/pink"
+    },
+    "C": {
+      "tag": "ae2:smart_cable"
+    }
+  },
+  "result": {
+    "item": "ae2:pink_smart_cable",
+    "count": 8
+  }
+}

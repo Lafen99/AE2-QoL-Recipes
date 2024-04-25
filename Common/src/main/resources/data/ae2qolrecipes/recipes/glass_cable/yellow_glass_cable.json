@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:dyes/yellow"
+    },
+    {
+      "tag": "ae2:glass_cable"
+    }
+  ],
+  "result": {
+    "item": "ae2:yellow_glass_cable"
+  }
+}

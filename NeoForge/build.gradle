@@ -4,7 +4,7 @@ plugins {
     id 'java-library'
     id 'eclipse'
     id 'idea'
-    id 'net.neoforged.gradle.userdev' version '7.0.57'
+    id 'net.neoforged.gradle.userdev' version '7.0.105'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
@@ -12,8 +12,6 @@ plugins {
 base {
     archivesBaseName = "${mod_id}-neoforge-${neo_supported_versions}"
 }
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 runs {
 
@@ -46,11 +44,11 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 	compileOnly project(":Common")
 
-    implementation "maven.modrinth:cloth-config:6GeyuE7Y"
-    implementation "maven.modrinth:architectury-api:BcFTKnjw"
-    implementation "maven.modrinth:rei:HaXjvArr"
+//    implementation "maven.modrinth:cloth-config:6GeyuE7Y"
+//    implementation "maven.modrinth:architectury-api:BcFTKnjw"
+//    implementation "maven.modrinth:rei:HaXjvArr"
 
-    implementation "maven.modrinth:ae2:Cf5vGMwV" // https://modrinth.com/mod/ae2/versions
+    implementation "maven.modrinth:ae2:pGnl32B8" // https://modrinth.com/mod/ae2/versions
 }
 
 tasks.withType(JavaCompile).configureEach {
@@ -63,7 +61,7 @@ processResources {
 
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
-            file: 'META-INF/mods.toml',
+            file: 'META-INF/neoforge.mods.toml',
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             neo_version: neo_version, neo_version_range: neo_version_range,
             loader_version_range: loader_version_range,
@@ -73,7 +71,7 @@ tasks.withType(ProcessResources).configureEach {
 
     inputs.properties replaceProperties
 
-    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
         expand replaceProperties
     }
 }
@@ -103,5 +101,12 @@ modrinth {
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     dependencies {
         required.project "ae2"
+    }
+}
+
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
     }
 }

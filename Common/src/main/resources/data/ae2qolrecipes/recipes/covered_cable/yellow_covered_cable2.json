@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CDC",
+    "CCC"
+  ],
+  "key": {
+    "D": {
+      "tag": "c:dyes/yellow"
+    },
+    "C": {
+      "tag": "ae2:covered_cable"
+    }
+  },
+  "result": {
+    "item": "ae2:yellow_covered_cable",
+    "count": 8
+  }
+}
