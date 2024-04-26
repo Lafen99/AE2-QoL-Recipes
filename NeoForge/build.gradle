@@ -51,7 +51,7 @@ dependencies {
     implementation "maven.modrinth:ae2:pGnl32B8" // https://modrinth.com/mod/ae2/versions
 }
 
-tasks.withType(JavaCompile).configureEach {
+tasks.named('compileJava', JavaCompile).configure {
     source(project(":Common").sourceSets.main.allSource)
 }
 
