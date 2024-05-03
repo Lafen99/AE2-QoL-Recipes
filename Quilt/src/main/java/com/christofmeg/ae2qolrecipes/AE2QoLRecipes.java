@@ -1,4 +1,4 @@
-package com.github.lafen99;
+package com.christofmeg.ae2qolrecipes;
 
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;

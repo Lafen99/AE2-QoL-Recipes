@@ -64,6 +64,7 @@ dependencies {
     }
 
     implementation fg.deobf("curse.maven:applied-energistics-2-223794:4647844") // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
+    implementation fg.deobf("curse.maven:polymorph-388800:5222033")
 
 }
 

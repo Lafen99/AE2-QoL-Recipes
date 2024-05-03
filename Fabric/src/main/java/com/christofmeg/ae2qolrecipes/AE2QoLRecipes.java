@@ -1,4 +1,4 @@
-package com.github.lafen99;
+package com.christofmeg.ae2qolrecipes;
 
 import net.fabricmc.api.ModInitializer;
 
