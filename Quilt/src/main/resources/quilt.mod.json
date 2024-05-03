@@ -1,12 +1,12 @@
 {
     "schema_version": 1,
     "quilt_loader": {
-        "group": "com.github.lafen99",
+        "group": "com.christofmeg.ae2qolrecipes",
         "id": "ae2qolrecipes",
-        "version": "1.1.0",
+        "version": "${version}",
         "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
-          "init": "com.github.lafen99.AE2QoLRecipes"
+          "init": "com.christofmeg.ae2qolrecipes.AE2QoLRecipes"
         },
         "depends": [
             {

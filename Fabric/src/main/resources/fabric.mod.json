@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.lafen99.AE2QoLRecipes"
+      "com.christofmeg.ae2qolrecipes.AE2QoLRecipes"
     ]
   },
   "depends": {

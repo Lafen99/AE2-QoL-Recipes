@@ -17,6 +17,8 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.3.5"))
+
     // JEI
     if (project.hasProperty('jei_version')) {
         modCompileOnly("mezz.jei:jei-${fabric_minecraft_version}-common-api:${jei_version}")
@@ -38,7 +40,7 @@ dependencies {
     }
 
 //    modImplementation "curse.maven:applied-energistics-2-223794:4735349" // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
-    modImplementation "curse.maven:polymorph-388800:5222031"
+//    modImplementation "curse.maven:polymorph-388800:5222031"
 
 }
 

@@ -72,6 +72,19 @@ processResources {
     from project(":Common").sourceSets.main.resources
 }
 
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            file: 'META-INF/mods.toml',
+            version: version
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties
+    }
+}
+
 jar.finalizedBy('reobfJar')
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {

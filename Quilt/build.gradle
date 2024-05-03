@@ -40,8 +40,8 @@ dependencies {
         }
     }
 
-    //    modImplementation "curse.maven:applied-energistics-2-223794:4735349" // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
-    modImplementation "curse.maven:polymorph-388800:5222031"
+//    modImplementation "curse.maven:applied-energistics-2-223794:4735349" // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
+//    modImplementation "curse.maven:polymorph-388800:5222031"
 
 }
 

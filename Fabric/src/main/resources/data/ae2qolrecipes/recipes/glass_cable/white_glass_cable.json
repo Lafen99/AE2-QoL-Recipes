@@ -2,10 +2,10 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "c:white_dyes"
+      "tag": "ae2:glass_cable"
     },
     {
-      "tag": "ae2:glass_cable"
+      "tag": "c:white_dyes"
     }
   ],
   "result": {
