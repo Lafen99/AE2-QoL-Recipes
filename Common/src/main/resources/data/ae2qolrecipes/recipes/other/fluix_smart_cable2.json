@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "appliedenergistics2:smart_cable"
+    },
+    {
+      "tag": "appliedenergistics2:can_remove_color"
+    }
+  ],
+  "result": {
+    "item": "appliedenergistics2:fluix_smart_cable"
+  }
+}

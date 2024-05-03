@@ -62,12 +62,26 @@ dependencies {
         implementation fg.deobf("curse.maven:catalogue-459701:${catalogue_version}")
     }
 
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:3527063")// https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
+    implementation fg.deobf("curse.maven:applied-energistics-2-223794:3527063") // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
+    implementation fg.deobf("curse.maven:polymorph-388800:3587702")
 
 }
 
 processResources {
     from project(":Common").sourceSets.main.resources
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+            file: 'META-INF/mods.toml',
+            version: version
+    ]
+
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml']) {
+        expand replaceProperties
+    }
 }
 
 jar.finalizedBy('reobfJar')

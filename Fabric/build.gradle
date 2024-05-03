@@ -1,7 +1,7 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'fabric-loom' version '0.10-SNAPSHOT'
+    id 'fabric-loom' version '1.0-SNAPSHOT'
     id 'idea'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
@@ -17,6 +17,12 @@ dependencies {
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":Common")
 
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.3.5"))
+
+    modImplementation "curse.maven:roughly-enough-items-310111:3652709"
+    modImplementation "curse.maven:architectury-api-419699:3807017"
+    modImplementation "curse.maven:cloth-config-348521:3782781"
+
     // CONFIGURED
     if (project.hasProperty('fabric_configured_version')) {
         modImplementation "curse.maven:configured-fabric-667378:${fabric_configured_version}"
@@ -30,11 +36,8 @@ dependencies {
         }
     }
 
-    modImplementation "curse.maven:roughly-enough-items-310111:3652709"
-    modImplementation "curse.maven:architectury-api-419699:3807017"
-    modImplementation "curse.maven:cloth-config-348521:3782781"
-
 //    modImplementation "curse.maven:applied-energistics-2-223794:3520658" // https://www.curseforge.com/minecraft/mc-mods/applied-energistics-2/files
+//    modImplementation "curse.maven:polymorph-388800:5222031"
 
 }
 
@@ -63,9 +66,6 @@ processResources {
         expand "version": project.version
     }
 }
-
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
     apiToken = file('../../API Tokens/ae2qolrecipes.md')
