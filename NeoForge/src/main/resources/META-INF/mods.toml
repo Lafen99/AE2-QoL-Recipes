@@ -3,13 +3,13 @@ loaderVersion="${loader_version_range}"
 issueTrackerURL="https://github.com/Christofmeg/AE2-QoL-Recipes/issues"
 license="${mod_license}"
 [[mods]]
-modId="${mod_id}"
-version="${version}"
-displayName="${mod_name}" 
-displayURL="https://github.com/Christofmeg/AE2-QoL-Recipes"
-logoFile="icon.png"
-authors="${mod_authors}"
-description='''${mod_description}'''
+	modId="${mod_id}"
+	version="${version}"
+	displayName="${mod_name}" 
+	displayURL="https://github.com/Christofmeg/AE2-QoL-Recipes"
+	logoFile="icon.png"
+	authors="${mod_authors}"
+	description='''${mod_description}'''
 [[dependencies.${mod_id}]]
     modId="neoforge"
     mandatory=true

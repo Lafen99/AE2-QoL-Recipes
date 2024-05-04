@@ -2,10 +2,13 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     {
-      "tag": "ae2:smart_cable"
+      "item": "ae2:brown_covered_cable"
     },
     {
-      "tag": "forge:dyes/brown"
+      "tag": "forge:dusts/redstone"
+    },
+    {
+      "tag": "forge:dusts/glowstone"
     }
   ],
   "result": {
