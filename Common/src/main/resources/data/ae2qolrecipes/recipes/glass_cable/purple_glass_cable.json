@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "c:dyes/purple"
+      "tag": "ae2:glass_cable"
     },
     {
-      "tag": "ae2:glass_cable"
+      "tag": "c:dyes/purple"
     }
   ],
   "result": {

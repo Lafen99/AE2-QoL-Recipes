@@ -3,10 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "ae2:smart_cable"
+      "item": "ae2:gray_covered_cable"
     },
     {
-      "tag": "c:dyes/gray"
+      "tag": "c:dusts/redstone"
+    },
+    {
+      "tag": "c:dusts/glowstone"
     }
   ],
   "result": {

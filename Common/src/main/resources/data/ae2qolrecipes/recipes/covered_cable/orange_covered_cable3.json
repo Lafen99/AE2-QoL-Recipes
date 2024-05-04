@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "c:dyes/orange"
+      "tag": "ae2:covered_cable"
     },
     {
-      "tag": "ae2:covered_cable"
+      "tag": "c:dyes/orange"
     }
   ],
   "result": {
