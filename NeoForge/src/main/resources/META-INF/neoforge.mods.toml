@@ -1,7 +1,7 @@
 modLoader="javafml"
-loaderVersion="${loader_version_range}"
+loaderVersion="${neoforge_loader_version_range}"
 issueTrackerURL="https://github.com/Christofmeg/AE2-QoL-Recipes/issues"
-license="${mod_license}"
+license="${license}"
 [[mods]]
     modId="${mod_id}"
     version="${version}"
@@ -9,16 +9,16 @@ license="${mod_license}"
     displayURL="https://github.com/Christofmeg/AE2-QoL-Recipes"
     logoFile="icon.png"
     authors="${mod_authors}"
-    description='''${mod_description}'''
+    description='''${description}'''
 [[dependencies.${mod_id}]]
     modId="neoforge"
-    type="REQUIRED"
-    versionRange="${neo_version_range}"
+    type="required"
+    versionRange="${neoforge_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]
     modId="minecraft"
-    type="REQUIRED"
+    type="required"
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"

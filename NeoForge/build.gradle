@@ -1,91 +1,55 @@
 import net.darkhax.curseforgegradle.TaskPublishCurseForge
 
 plugins {
-    id 'java-library'
-    id 'eclipse'
-    id 'idea'
-    id 'net.neoforged.gradle.userdev' version '7.0.105'
+    id 'multiloader-loader'
+    id 'net.neoforged.gradle.userdev' version '7.0.142'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id 'com.modrinth.minotaur' version '2.+'
 }
 
-base {
-    archivesBaseName = "${mod_id}-neoforge-${neo_supported_versions}"
-}
-
 runs {
-
     configureEach {
-        systemProperty 'forge.logging.markers', 'REGISTRIES'
-        systemProperty 'forge.logging.console.level', 'debug'
         modSource project.sourceSets.main
-        modSource project(":Common").sourceSets.main
     }
-
     client {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
     }
-
     server {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'
     }
+}
 
-    gameTestServer {
-        systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
-    }
-
-    data {
-        programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+subsystems {
+    parchment {
+        minecraftVersion = "${parchment_mc}"
+        mappingsVersion = "${parchment_version}"
     }
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neo_version}"
-	compileOnly project(":Common")
+    implementation "net.neoforged:neoforge:${neoforge_version}"
 
-//    implementation "maven.modrinth:cloth-config:6GeyuE7Y"
-//    implementation "maven.modrinth:architectury-api:BcFTKnjw"
-//    implementation "maven.modrinth:rei:HaXjvArr"
-
-    implementation "maven.modrinth:ae2:pGnl32B8" // https://modrinth.com/mod/ae2/versions
-}
-
-tasks.named('compileJava', JavaCompile).configure {
-    source(project(":Common").sourceSets.main.allSource)
-}
-
-processResources {
-    from project(":Common").sourceSets.main.resources
-}
-
-tasks.withType(ProcessResources).configureEach {
-    var replaceProperties = [
-            file: 'META-INF/neoforge.mods.toml',
-            minecraft_version: minecraft_version, 
-			minecraft_version_range: minecraft_version_range,
-            neo_version: neo_version, 
-			neo_version_range: neo_version_range,
-            loader_version_range: loader_version_range,
-            mod_id: mod_id, 
-			mod_name: mod_name, 
-			mod_license: mod_license, 
-			version: version,
-            mod_authors: mod_authors, 
-			mod_description: mod_description
-    ]
-
-    inputs.properties replaceProperties
-
-    filesMatching(['META-INF/neoforge.mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties
+    // JEI
+    if (project.hasProperty('jei_version')) {
+        if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
+            runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+        }
     }
+
+    // CATALOGUE
+    if (project.hasProperty('catalogue_version')) {
+        implementation "curse.maven:catalogue-459701:${catalogue_version}"
+    }
+	
+	implementation "maven.modrinth:ae2:hZu6jr2B" // https://modrinth.com/mod/ae2/versions
+
 }
 
 tasks.register('publishCurseForge', TaskPublishCurseForge) {
-    apiToken = file('../../API Tokens/ae2qolrecipes.md')
+    apiToken = file('../../API Tokens/justenoughbreeding.md')
     def projectId = "${cf_id}".toString()
-    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"))
+    def mainFile = upload(projectId, file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")) as Object
     mainFile.changelogType = 'markdown'
     mainFile.changelog = file('changelog.md')
     mainFile.addGameVersion('Client', 'Server')
@@ -106,14 +70,6 @@ modrinth {
     uploadFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
     gameVersions = "${neoforge_release_versions}".split(",") as List<String>
     dependencies {
-        required.project "ae2"
-    }
-}
-
-
-idea {
-    module {
-        downloadSources = true
-        downloadJavadoc = true
+    required.project "ae2"
     }
 }
