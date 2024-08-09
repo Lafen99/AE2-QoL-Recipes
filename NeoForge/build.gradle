@@ -7,6 +7,10 @@ plugins {
     id 'com.modrinth.minotaur' version '2.+'
 }
 
+base {
+    archivesName = "${mod_id}-${project.name}-${neoforge_supported_versions}"
+}
+
 runs {
     configureEach {
         modSource project.sourceSets.main
@@ -33,7 +37,7 @@ dependencies {
     // JEI
     if (project.hasProperty('jei_version')) {
         if (project.hasProperty('enable_jei') && project.enable_jei.toBoolean()) {
-            runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
+            runtimeOnly("mezz.jei:jei-${jei_minecraft_version}-neoforge:${jei_version}")
         }
     }
 
@@ -42,7 +46,7 @@ dependencies {
         implementation "curse.maven:catalogue-459701:${catalogue_version}"
     }
 	
-	implementation "maven.modrinth:ae2:hZu6jr2B" // https://modrinth.com/mod/ae2/versions
+	implementation "maven.modrinth:ae2:BXufDcIQ" // https://modrinth.com/mod/ae2/versions
 
 }
 
